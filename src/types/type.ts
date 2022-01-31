@@ -1,6 +1,11 @@
 export type CityType = {
     cityName: string,
-    date: string,
+    date: object,
     degree: number,
     icon: string
+}
+
+export type MainType = {
+    isTrue: boolean
+
 }

@@ -1,6 +1,6 @@
 import { CityType } from "../../types/type"
 
-const ADD_CITY_NAME = 'ADD_CITY_NAME'
+const ADD_NEW_CITY = 'ADD_NEW_CITY'
 
 
 type initialStateType = {
@@ -10,7 +10,7 @@ type initialStateType = {
 let initialState: initialStateType = {
     city: [{
         cityName: '',
-        date: '',
+        date: {},
         degree: 0,
         icon: ''
     }]
@@ -19,10 +19,16 @@ let initialState: initialStateType = {
 const MainReducer = (state = initialState, action: any) => {
     switch (action.type) {
 
-        case ADD_CITY_NAME:
+        case ADD_NEW_CITY:
             return {
-                ...state,
-                cityName: action.cityName
+                city: [...state.city,
+                {
+                    cityName: action.cityName,
+                    date: action.date,
+                    degree: action.degree,
+                    icon: action.icon
+                }
+                ]
             }
 
         default:
@@ -30,7 +36,7 @@ const MainReducer = (state = initialState, action: any) => {
     }
 }
 
-type addNewCityType = { type: typeof ADD_CITY_NAME, cityName: string }
-export const addNewCityAc = (cityName: string): addNewCityType => ({ type: ADD_CITY_NAME, cityName })
+type addNewCityType = { type: typeof ADD_NEW_CITY, cityName: string, date: object, degree: number, icon: string }
+export const addNewCityAc = (cityName: string, date: object, degree: number, icon: string): addNewCityType => ({ type: ADD_NEW_CITY, cityName, date, degree, icon })
 
 export default MainReducer
