@@ -1,14 +1,16 @@
 import React from 'react';
+import girl from './img/girl.png'
 
 import './App.sass';
-import MainContainer from './components/MainContainer';
+import MainContainer from './components/Main/MainContainer';
 
 const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="logo">WeatherToday</div>
+      <img className="App__img" src={girl} alt="" />
+      <header className="App__header">
+        <div className="App__header__logo">WeatherToday</div>
       </header>
       <MainContainer />
     </div>

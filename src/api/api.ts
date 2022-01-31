@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const apiKey = 'fadb13ba387f5b23b335c73b7fdb9e4d'
+const apiKey = '35738bcc841b667fe31c3218b17e5576'
 
 export const currentCity = () => {
     return axios.get('http://ipwhois.app/json/')

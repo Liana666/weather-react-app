@@ -1,8 +1,11 @@
+import { addNewCityAc } from "../redux/reducers/MainReducer"
+
 export type CityType = {
     cityName: string,
-    date: object,
+    date: string,
     degree: number,
-    icon: string
+    icon: string,
+    description: string
 }
 
 export type MainType = {

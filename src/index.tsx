@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import store from './redux/store';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import store from './redux/store'
 
-import './index.sass';
+import './index.sass'
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <React.StrictMode>
