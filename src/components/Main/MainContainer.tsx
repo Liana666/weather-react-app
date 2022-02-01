@@ -4,7 +4,7 @@ import { currentCity } from '../../api/api'
 import { getWeather } from "../../api/api"
 import { useDispatch, useSelector } from "react-redux"
 import { AppStateType } from "../../redux/store"
-
+import { getWeatherIcons } from "../../weatherIcon/weatherIcon"
 import { addNewCityAc } from "../../redux/reducers/MainReducer"
 
 import Main from "./Main"

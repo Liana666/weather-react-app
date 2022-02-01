@@ -1,5 +1,6 @@
 import React from "react"
 import { CityType } from "../../types/type"
+import { getWeatherIcons } from "../../weatherIcon/weatherIcon"
 
 import trash from '../../icons/trash.svg'
 
@@ -13,7 +14,7 @@ const Main: React.FC<CityType> = ({
     description
 }) => {
 
-    const imgLink = `http://openweathermap.org/img/wn/${icon}@2x.png`
+    // const imgLink = `http://openweathermap.org/img/wn/${icon}@2x.png`
 
 
     return (
@@ -24,10 +25,12 @@ const Main: React.FC<CityType> = ({
                     <div className="main_wrapper__first__date">{date}</div>
                 </div>
                 <div className="main_wrapper__second">
-                    <div className="main_wrapper__second__degree">{Math.round(degree - 273)}</div>
+                    <div className="main_wrapper__second__degree">
+                        <div className="second__degree__title">{Math.round(degree - 273)}</div>
+                        <div className="second__degree__description">{description}</div>
+                    </div>
                     <div className="main_wrapper__second__icon">
-                        <img src={imgLink} alt="" />
-                        {description}
+                        <img src={getWeatherIcons(icon)} alt="" />
                     </div>
 
                 </div>
