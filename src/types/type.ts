@@ -5,7 +5,9 @@ export type CityType = {
     date: string,
     degree: number,
     icon: string,
-    description: string
+    description: string,
+    sunrise?: string | number,
+    sunset?: string | number
 }
 
 export type MainType = {

@@ -1,10 +1,18 @@
-import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import girl from './img/girl.png'
-
+import plus from "./icons/plus.svg"
+import { changeBooleanAc } from './redux/reducers/PopUpReducer';
+import { AppStateType } from './redux/store';
 import './App.sass';
 import MainContainer from './components/Main/MainContainer';
+import NewCity from './components/NewCity/NewCity';
 
 const App = () => {
+  let isTrue = useSelector((state: AppStateType) => state.PopUp.isTrue)
+  const dispatch = useDispatch();
+  const openPopup = () => {
+    dispatch(changeBooleanAc(true))
+  }
 
   return (
     <div className="App">
@@ -13,6 +21,16 @@ const App = () => {
         <div className="App__header__logo">WeatherToday</div>
       </header>
       <MainContainer />
+      <section className="button_new">
+        <div
+          onClick={openPopup}
+          className="plus">
+          <img src={plus} alt="" />
+        </div>
+        <span>Добавить</span>
+      </section>
+      {isTrue ? <NewCity /> : null}
+
     </div>
   );
 }

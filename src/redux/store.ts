@@ -1,9 +1,11 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore } from "redux"
 
-import MainReducer from "./reducers/MainReducer";
+import MainReducer from "./reducers/MainReducer"
+import PopUpReducer from "./reducers/PopUpReducer"
 
 let reducers = combineReducers({
-    MainPage: MainReducer
+    MainPage: MainReducer,
+    PopUp: PopUpReducer
 })
 
 type Reducers = typeof reducers;

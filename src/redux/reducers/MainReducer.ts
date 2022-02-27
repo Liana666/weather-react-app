@@ -13,22 +13,28 @@ let initialState: initialStateType = {
         date: '',
         degree: 0,
         icon: '',
-        description: ''
+        description: '',
+        sunrise: 0,
+        sunset: 0
     }]
+
 }
 
-const MainReducer = (state = initialState, action: addNewCityType) => {
+const MainReducer = (state = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
 
         case ADD_NEW_CITY:
             return {
+                ...state,
                 city: [...state.city,
                 {
                     cityName: action.cityName,
                     date: action.date,
                     degree: action.degree,
                     icon: action.icon,
-                    description: action.description
+                    description: action.description,
+                    sunrise: action.sunrise,
+                    sunset: action.sunset
                 }
                 ]
             }
@@ -38,7 +44,10 @@ const MainReducer = (state = initialState, action: addNewCityType) => {
     }
 }
 
-type addNewCityType = { type: typeof ADD_NEW_CITY, cityName: string, date: string, degree: number, icon: string, description: string }
-export const addNewCityAc = (cityName: string, date: string, degree: number, icon: string, description: string): addNewCityType => ({ type: ADD_NEW_CITY, cityName, date, degree, icon, description })
+type ActionType = addNewCityType
+
+type addNewCityType = { type: typeof ADD_NEW_CITY, cityName: string, date: string, degree: number, icon: string, description: string, sunrise: string | number, sunset: string | number }
+export const addNewCityAc = (cityName: string, date: string, degree: number, icon: string, description: string, sunrise: string | number, sunset: string | number): addNewCityType => ({ type: ADD_NEW_CITY, cityName, date, degree, icon, description, sunrise, sunset })
+
 
 export default MainReducer
