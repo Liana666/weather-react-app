@@ -26,7 +26,6 @@ const MainContainer = () => {
         currentCity()
             .then(res => {
                 dispatch(addCityInArrAc(res.city))
-                localStorage.setItem('cities', JSON.stringify([res.city]));
                 dispatch(addCurrentCityAc(res.city))
             })
             .catch(error => console.error('Error', error))

@@ -6,9 +6,11 @@ import { AppStateType } from './redux/store';
 import './App.sass';
 import MainContainer from './components/Main/MainContainer';
 import NewCity from './components/NewCity/NewCity';
+import CityDetails from './components/CityDetails/CityDetails';
 
 const App = () => {
   let isTrue = useSelector((state: AppStateType) => state.PopUp.isTrue)
+  const isTrueClass = useSelector((state: AppStateType) => state.CityDetails.isTrue)
   const dispatch = useDispatch();
   const openPopup = () => {
     dispatch(changeBooleanAc(true))
@@ -30,7 +32,7 @@ const App = () => {
         <span>Добавить</span>
       </section>
       {isTrue ? <NewCity /> : null}
-
+      {isTrueClass ? <CityDetails /> : null}
     </div>
   );
 }

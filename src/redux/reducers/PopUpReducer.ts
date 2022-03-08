@@ -1,4 +1,3 @@
-import { currentCity } from './../../api/api';
 const SET_TRUE = 'SET_TRUE'
 const ADD_CITY_NAMES = 'ADD_CITY_NAMES'
 const SET_CURRENT_CITY = 'SET_CURRENT_CITY'

@@ -10,6 +10,13 @@ export type CityType = {
     sunset?: string | number
 }
 
+export type TwoDay = {
+    cityName: string,
+    temp: number,
+    icon: string,
+    date: any
+}
+
 export type MainType = {
     isTrue: boolean
 

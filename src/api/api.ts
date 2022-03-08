@@ -16,3 +16,11 @@ export const getWeather = (city: any) => {
             return res.data
         })
 }
+
+
+export const getTwoDayweather = (city: string) => {
+    return axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=4&appid=${apiKey}&lang=ru`)
+        .then(res => {
+            return res.data
+        })
+}

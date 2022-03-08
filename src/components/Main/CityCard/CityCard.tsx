@@ -1,10 +1,14 @@
 import React from "react"
 import { CityType } from "../../../types/type"
 import { getWeatherIcons } from "../../../weatherIcon/weatherIcon"
-
+import { removeCityAc } from "../../../redux/reducers/MainReducer"
+import { changeClassAc } from "../../../redux/reducers/CityDetailsReducer"
+import { addDayssWeatherAc } from "../../../redux/reducers/CityDetailsReducer"
+import { getTwoDayweather } from "../../../api/api"
 import trash from "../../../icons/trash.svg"
 
 import './CityCard.sass'
+import { useDispatch } from "react-redux"
 
 const CityCard: React.FC<CityType> = ({
     cityName,
@@ -14,12 +18,39 @@ const CityCard: React.FC<CityType> = ({
     description
 }) => {
 
-    // const imgLink = `http://openweathermap.org/img/wn/${icon}@2x.png`
+    const dispatch = useDispatch()
+
+    const removeCity = () => {
+        dispatch(removeCityAc(cityName))
+    }
+
+    const openCityDetails = () => {
+        let daysWeather: any = []
+
+
+        dispatch(changeClassAc(true))
+        getTwoDayweather(cityName)
+            .then(res => {
+                res.list.map((item: any, index: any, array: any) => {
+                    if (index === 0 || index === array.length - 1) {
+                        let obj = {
+                            cityName: res.city.name,
+                            temp: item.main.temp,
+                            icon: item.weather[0].icon,
+                            date: item.dt_txt
+                        }
+                        daysWeather.push(obj)
+                    }
+                })
+                dispatch(addDayssWeatherAc(daysWeather))
+            })
+            .catch(error => console.error('Error', error))
+    }
 
 
     return (
         <div className="main">
-            <div className="main_wrapper">
+            <div onClick={openCityDetails} className="main_wrapper">
                 <div className="main_wrapper__first">
                     <div className="main_wrapper__first__name">{cityName}</div>
                     <div className="main_wrapper__first__date">{date}</div>
@@ -35,7 +66,7 @@ const CityCard: React.FC<CityType> = ({
 
                 </div>
             </div>
-            <img className="trash" src={trash} alt="" />
+            <img onClick={removeCity} className="trash" src={trash} alt={cityName} />
         </div>
 
     )
