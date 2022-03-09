@@ -14,7 +14,9 @@ export type TwoDay = {
     cityName: string,
     temp: number,
     icon: string,
-    date: any
+    date: any,
+    sunrise: number,
+    sunset: number
 }
 
 export type MainType = {

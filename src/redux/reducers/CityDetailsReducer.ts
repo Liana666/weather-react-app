@@ -11,6 +11,8 @@ type initialStateType = {
 let initialState: initialStateType = {
     isTrue: false,
     twoDayWeather: [{
+        sunrise: 0,
+        sunset: 0,
         cityName: '',
         temp: 0,
         icon: '',

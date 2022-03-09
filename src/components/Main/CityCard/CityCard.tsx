@@ -34,12 +34,15 @@ const CityCard: React.FC<CityType> = ({
                 res.list.map((item: any, index: any, array: any) => {
                     if (index === 0 || index === array.length - 1) {
                         let obj = {
+                            sunrise: res.city.sunrise,
+                            sunset: res.city.sunset,
                             cityName: res.city.name,
                             temp: item.main.temp,
                             icon: item.weather[0].icon,
-                            date: item.dt_txt
+                            date: index === 0 ? 'Сегодня' : 'Завтра'
                         }
                         daysWeather.push(obj)
+                        console.log(daysWeather)
                     }
                 })
                 dispatch(addDayssWeatherAc(daysWeather))
